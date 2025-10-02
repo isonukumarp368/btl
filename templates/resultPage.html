@@ -1,0 +1,300 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Questions Generated According to Bloom's Taxonomy</title>
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e40af;
+            --background-color: #f0f9ff;
+            --text-color: #1e293b;
+            --card-background: #ffffff;
+            --success-color: #22c55e;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Title Styles */
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Dynamic List Styles */
+        .question-answer {
+            background-color: var(--card-background);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .question-answer.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .answer, .similarity {
+            margin-top: 0.5rem;
+        }
+
+        .similarity {
+            color: var(--success-color);
+            font-style: italic;
+        }
+
+        /* Go Back Link */
+        .go-back {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .go-back a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .go-back a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generated Questions and Answers</h2>
+
+        
+        {% if questions and answers %}
+            <div id="dynamicList">
+                {% for i in range(questions|length) %}
+                    <div class="question-answer">
+                        <div class="question">Q{{ i+1 }}: {{ questions[i] }}</div>
+                        <div class="answer">Answer: {{ answers[i] }}</div>
+                        {% if similarity %}
+                            <div class="similarity">Similarity Score: {{ "%.2f"|format(similarity[i]) }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No questions or answers available.</p>
+        {% endif %}
+
+        <div class="go-back">
+            <a href="/">Go Back</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to animate the question-answer list
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.question-answer');
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Questions Generated According to Bloom's Taxonomy</title>
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e40af;
+            --background-color: #f0f9ff;
+            --text-color: #1e293b;
+            --card-background: #ffffff;
+            --success-color: #22c55e;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Title Styles */
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Dynamic List Styles */
+        .question-answer {
+            background-color: var(--card-background);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .question-answer.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .answer, .similarity, .metrics {
+            margin-top: 0.5rem;
+        }
+
+        .similarity {
+            color: var(--success-color);
+            font-style: italic;
+        }
+
+        /* Go Back Link */
+        .go-back {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .go-back a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .go-back a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generated Questions and Answers</h2>
+
+       
+        {% if questions and answers %}
+            <div id="dynamicList">
+                {% for i in range(questions|length) %}
+                    <div class="question-answer">
+                        <div class="question">Q{{ i+1 }}: {{ questions[i] }}</div>
+                        <div class="answer">Answer: {{ answers[i] }}</div>
+                        {% if similarity %}
+                            <div class="similarity">Similarity Score: {{ "%.2f"|format(similarity[i]) }}</div>
+                        {% endif %}
+                        {% if precision and recall and f1_score %}
+                            <div class="metrics">
+                                Precision: {{ "%.2f"|format(precision[i]) }}<br>
+                                Recall: {{ "%.2f"|format(recall[i]) }}<br>
+                                F1 Score: {{ "%.2f"|format(f1_score[i]) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No questions or answers available.</p>
+        {% endif %}
+
+        <div class="go-back">
+            <a href="/">Go Back</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to animate the question-answer list
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.question-answer');
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAQG</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #279bd0;
+            --text-color: #202124;
+            --light-gray: #f0f9ff;
+            --medium-gray: #dadce0;
+            --white: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        textarea, select, input[type="number"] {
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus, select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .bloom-levels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bloom-level {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px;
+            text-align: center;
+            background-color: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bloom-level:hover, .bloom-level.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .question-count {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question-count input {
+            width: 60px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .question-count button {
+            background-color: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .question-count button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .submit-btn {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #1967d2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--white);
+            color: var(--text-color);
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .bloom-levels {
+                flex-direction: column;
+            }
+            .bloom-level {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Bloom's Taxonomy</div>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Question Answer Generator</h1>
+        <form action="/process_form" method="POST">
+            <label for="user_input">Enter Your Text:</label>
+            <textarea name="user_input" rows="6" placeholder="Paste your text here..." required></textarea>
+
+            <label>Select Bloom's Taxonomy Level:</label>
+            <div class="bloom-levels">
+                <div class="bloom-level" data-level="1">Remember</div>
+                <div class="bloom-level" data-level="2">Understand</div>
+                <div class="bloom-level" data-level="3">Apply</div>
+                <div class="bloom-level" data-level="4">Analyze</div>
+                <div class="bloom-level" data-level="5">Evaluate</div>
+                <div class="bloom-level" data-level="6">Create</div>
+            </div>
+            <input type="hidden" name="question_level" id="question_level" value="1">
+
+            <div class="question-count">
+                <label for="question_count">Number of Questions:</label>
+                <button type="button" id="decrease">-</button>
+                <input type="number" name="question_count" id="question_count" min="1" max="50" value="1" required>
+                <button type="button" id="increase">+</button>
+            </div>
+
+            <button type="submit" class="submit-btn">Generate Questions</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 copyright@sonu. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Bloom's Taxonomy Level Selection
+        const bloomLevels = document.querySelectorAll('.bloom-level');
+        const questionLevelInput = document.getElementById('question_level');
+
+        bloomLevels.forEach(level => {
+            level.addEventListener('click', () => {
+                bloomLevels.forEach(l => l.classList.remove('active'));
+                level.classList.add('active');
+                questionLevelInput.value = level.getAttribute('data-level');
+            });
+        });
+
+        // Question Count Adjustment
+        const questionCountInput = document.getElementById('question_count');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (questionCountInput.value > 1) {
+                questionCountInput.value--;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            if (questionCountInput.value < 50) {
+                questionCountInput.value++;
+            }
+        });
+    </script>
+</body>
+</html>

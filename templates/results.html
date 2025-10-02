@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <h2>Your Input Text:</h2>
+    <p>{{ session['user_input'] }}</p>
+
+    <h2>Generated Questions and Your Answers:</h2>
+    <ul>
+        {% for question, user_answer in results %}
+            <li>
+                <strong>Question:</strong> {{ question }}<br>
+                <strong>Your Answer:</strong> {{ user_answer }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Evaluation Metrics:</h2>
+    <p><strong>Precision:</strong> {{ precision }}</p>
+    <p><strong>Recall:</strong> {{ recall }}</p>
+    <p><strong>F1 Score:</strong> {{ f1 }}</p>
+
+    <a href="/">Go Back to Home</a>
+</body>
+</html>
