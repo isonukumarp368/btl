@@ -21,40 +21,6 @@ The system aligns with **Bloom’s Taxonomy** (six cognitive levels), making it 
 - 📊 **Evaluation Metrics**: Precision, Recall, F1-score, Semantic Similarity  
 - 📦 Export results to Excel  
 
----
-
-## 📂 Project Structure
-
-```
-btl/
-│── app.py                  # Main Flask app
-│── requirements.txt         # Dependencies
-│
-├── core/                    # Core NLP & AI logic
-│   ├── text_processing.py   # Tokenization, POS tagging, NER, SVO extraction
-│   ├── question_generation.py # Q–A generation with Bloom’s taxonomy
-│   ├── answer_extraction.py # Extracts short factual answers
-│   ├── evaluation.py        # Precision, Recall, F1, BERT similarity
-│   └── __init__.py
-│
-├── static/                  # CSS + JS + images
-│   └── style.css
-│
-├── templates/               # HTML Templates
-│   ├── index.html           # Input form
-│   ├── resultPage.html      # Display Q&A
-│   └── results.html
-│
-├── data/                    # Data outputs
-│   ├── generated_questions.xlsx
-│   └── evaluation_metrics.xlsx
-│
-└── notebooks/               # Jupyter prototypes
-    ├── text_qg_prototype.ipynb
-    └── evaluation_prototype.ipynb
-```
-
----
 
 ## ⚙️ Installation & Setup
 
@@ -117,14 +83,6 @@ Ravi is a boy. He loves reading books and playing cricket.
 - **Level 4 (Analyze):** What are the components of Ravi’s hobbies?  
 - **Level 5 (Evaluate):** Do you agree reading makes Ravi a better student? Why/why not?  
 - **Level 6 (Create):** Can you design a story where Ravi’s love for cricket changes his life?  
-
----
-
-## 📸 Screenshots
-
-(Add screenshots here once you run the project)
-
----
 
 ## 📌 Future Enhancements
 
